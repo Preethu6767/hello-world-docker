@@ -1,0 +1,24 @@
+name: Run Hello World Locally
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-world-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code from the repository
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Build the Docker Image
+    - name: Build Docker Image
+      run: docker build -t hello-world-image .
+
+    # Run the Docker Image
+    - name: Run Hello World
+      run: docker run hello-world-image
+
